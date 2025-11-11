@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andres Galdamez - Wikipedia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f8f9fa;
+            color: #202122;
+            line-height: 1.6;
+        }
+
+        /* ---------- Top Ads Wrapper ---------- */
+        .top-ads-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            background: #fff;
+            border-bottom: 1px solid #a2a9b1;
+            padding: 10px 0;
+            z-index: 999;
+        }
+
+        .top-ads-wrapper .top-ad {
+            flex: 0 1 auto;
+            text-align: center;
+        }
+
+        .top-ads-wrapper .top-ad img {
+            max-width: 728px;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ---------- Side Ads ---------- */
+        .side-ad {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 120px;
+            text-align: center;
+            z-index: 998;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .side-ad img {
+            width: 100px;
+            height: auto;
+            border: 1px solid #a2a9b1;
+            background: #fff;
+            padding: 5px;
+        }
+
+        .side-ad.left { left: 10px; }
+        .side-ad.right { right: 10px; }
+
+        /* ---------- Header ---------- */
+        .header {
+            background: #fff;
+            border-bottom: 1px solid #a2a9b1;
+            padding: 10px 0;
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo { font-size: 24px; font-weight: bold; color: #000; text-decoration: none; }
+
+        .search-box {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #a2a9b1;
+            border-radius: 2px;
+            font-size: 14px;
+        }
+
+        /* ---------- Main Container ---------- */
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: #fff;
+            border: 1px solid #a2a9b1;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 180px;
+            padding: 20px 10px;
+            border-right: 1px solid #a2a9b1;
+            font-size: 13px;
+        }
+
+        .sidebar h3 { font-size: 14px; margin-bottom: 10px; color: #202122; }
+        .sidebar ul { list-style: none; }
+        .sidebar li { margin-bottom: 8px; }
+        .sidebar a {
+            color: #0645ad;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .sidebar a:hover { text-decoration: underline; color: #3366cc; }
+
+        .main-content { flex: 1; padding: 20px 30px; }
+
+        /* ---------- Titles ---------- */
+        .title {
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 10px;
+            font-family: 'Linux Libertine', Georgia, Times, serif;
+        }
+
+        .subtitle { font-size: 13px; color: #54595d; margin-bottom: 20px; }
+
+        /* ---------- Infobox ---------- */
+        .infobox {
+            float: right;
+            width: 280px;
+            border: 1px solid #a2a9b1;
+            background: #f8f9fa;
+            margin: 0 0 20px 20px;
+            font-size: 13px;
+            line-height: 1.4;
+            border-collapse: collapse;
+        }
+
+        .infobox-title { background: #eaecf0; padding: 10px; font-size: 16px; font-weight: bold; text-align: center; }
+        .infobox-image { width: 100%; background: #f8f9fa; text-align: center; padding: 8px; }
+
+        .infobox-image img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #a2a9b1;
+            background-color: #fff;
+            padding: 2px;
+            box-shadow: 0 20px 20px rgba(0,0,0,0.1);
+            transition: all 0.25s ease;
+        }
+
+        .infobox-image img:hover {
+            filter: brightness(1.05);
+            border-color: #3366cc;
+            box-shadow: 0 0 4px rgba(51,102,204,0.3);
+        }
+
+        .infobox-caption { font-size: 12px; color: #54595d; margin-top: 4px; font-style: italic; }
+        .infobox-content { padding: 10px; }
+        .infobox-row { display: flex; padding: 5px 0; border-bottom: 1px solid #eaecf0; }
+        .infobox-label { font-weight: bold; width: 100px; flex-shrink: 0; }
+        .infobox-value { flex: 1; }
+
+        .content p { margin-bottom: 15px; text-align: justify; }
+
+        /* ---------- Section Images Inline with Text ---------- */
+        .section-image {
+            float: right;          
+            width: 200px;          
+            margin: 0 0 15px 15px; 
+            background: #f8f9fa;
+            border: 1px solid #a2a9b1;
+            padding: 5px;
+            text-align: center;
+            font-size: 12px;
+            color: #202122;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .section-image .caption {
+            font-style: italic;
+            color: #54595d;
+        }
+
+        .content h2 { font-size: 24px; margin-top: 30px; margin-bottom: 10px; border-bottom: 1px solid #a2a9b1; padding-bottom: 3px; font-weight: 400; font-family: 'Linux Libertine', Georgia, Times, serif; }
+        .content h3 { font-size: 18px; margin-top: 20px; margin-bottom: 10px; font-weight: 600; }
+        .content a { color: #0645ad; text-decoration: none; transition: color 0.2s ease; }
+        .content a:hover { text-decoration: underline; color: #3366cc; }
+
+        .toc {
+            border: 1px solid #a2a9b1;
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 20px 0;
+            display: inline-block;
+            min-width: 300px;
+        }
+
+        .toc-title { font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .toc ul { list-style: none; padding-left: 15px; }
+        .toc li { margin: 5px 0; }
+        .toc a { color: #0645ad; text-decoration: none; transition: color 0.2s ease; }
+        .toc a:hover { text-decoration: underline; color: #3366cc; }
+
+        .reference { font-size: 11px; vertical-align: super; color: #0645ad; }
+        .references { font-size: 13px; }
+        .references ol { padding-left: 20px; }
+        .references li { margin-bottom: 8px; }
+
+        /* ------------------ Mobile Responsiveness ------------------ */
+        @media screen and (max-width: 768px) {
+            /* Stack top ads */
+            .top-ads-wrapper {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                padding: 10px 0;
+            }
+
+            .top-ads-wrapper .top-ad {
+                width: 95%;
+                max-width: 400px;
+            }
+
+            .top-ads-wrapper .top-ad img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            /* Stack container columns */
+            .container { flex-direction: column; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #a2a9b1; }
+            .main-content { padding: 10px 15px; }
+
+            /* Infobox full width */
+            .infobox {     float: right;
+    			width: 100%;        
+    			max-width: 200px;  
+    			min-width: 120px; 
+   			 margin: 0 0 15px 15px; }
+
+		.section-image {
+   			float: right;     
+   			width: 40%;       
+   			max-width: 200px;   
+   			min-width: 120px;  
+    			margin: 0 0 15px 15px;
+			}
+
+
+            /* Resize title and headers */
+            .title { font-size: 24px; }
+            .content h2 { font-size: 20px; }
+            .content h3 { font-size: 16px; }
+
+            body { font-size: 14px; line-height: 1.5; }
+
+        }
+
+        /* Make all images responsive */
+        img { max-width: 100%; height: auto; }
+    </style>
+</head>
+
+
+
+
+<body>
+
+<div class="top-ads-wrapper">
+    <div class="top-ad">
+        <a href="https://www.instagram.com/chloekardashhh" target="_blank">
+            <img src="images/panasonic.gif" alt="Ad 1">
+        </a>
+    </div>
+    <div class="top-ad">
+        <a href="https://www.instagram.com/chloekardashhh" target="_blank">
+            <img src="images/job.gif" alt="Ad 2">
+        </a>
+    </div>
+    <div class="top-ad">
+        <a href="https://www.instagram.com/chloekardashhh" target="_blank">
+            <img src="images/gambl.GIF" alt="Ad 3">
+        </a>
+    </div>
+</div>
+
+
+  <!-- Side Ads 
+  <div class="side-ad left">
+    <img src="none.jpg" alt="Left AD 2">
+    <img src="none.jpg" alt="Left Ad 2">
+    <img src="none.jpg" alt="Left Ad 2">
+  </div>
+-->
+<div class="side-ad left">
+  <a href="https://www.instagram.com/chloekardashhh" target="_blank">
+    <img src="images/toysRUs.GIF" alt="Right Ad 1">
+  </a>
+  <a href="https://www.instagram.com/chloekardashhh" target="_blank">
+    <img src="images/myHusband.jpg" alt="Right Ad 2">
+  </a>
+</div>
+
+
+ 
+    <div class="header">
+        <div class="header-content">
+            <a href="#" class="logo">Wikipeedia</a>
+            <div class="search-box">
+                <input type="text" placeholder="Search Wikipoopdia">
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="sidebar">
+            <h3>Contents</h3>
+            <ul>
+                <li><a href="https://beesbeesbeesbees.com/" target="_blank">Main page</a></li>
+                <li><a href="http://endless.horse/" target="_blank">Contents</a></li>
+                <li><a href="https://grimacesbirthday.com/" target="_blank">Current events</a></li>
+                <li><a href="https://www.change.org/p/burger-king-bring-back-crown-shaped-nuggets-at-burger-king" target="_blank">Random article</a></li>
+                <li><a href="https://papertoilet.com/" target="_blank">About Wikipedia</a></li>
+            </ul>
+        </div>
+        
+        <div class="main-content">
+            <h1 class="title">Andres Galdamez</h1>
+            <div class="subtitle">From Wikipedia, the free encyclopedia</div>
+            
+            <div class="infobox">
+                <div class="infobox-title">Andres Galdamez</div>
+                <div class="infobox-image">
+                    <img src="images/linkedin.jpg" alt="Photo of Andres Galdamez">
+                    <div class="infobox-caption">his LinkedIn picture</div>
+                </div>
+                <div class="infobox-content">
+                    <div class="infobox-row">
+                        <div class="infobox-label">Born</div>
+                        <div class="infobox-value">July 27, 2020 Dallas, TX</div>
+                    </div>
+                    <div class="infobox-row">
+                        <div class="infobox-label">Died</div>
+                        <div class="infobox-value">November 2, 2025</div>
+                    </div>
+                    <div class="infobox-row">
+                        <div class="infobox-label">Known For</div>
+                        <div class="infobox-value">The Tiny Chairs Humiliationship</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content">
+                <p><strong>Andres Galdamez</strong> (Chloekardashhh | Andy) was an artist and unemployed tech guy from Texas</p>
+                
+                <p>Andres grew up in Oak Cliff, Texas and was a little alienated because he didn't do as much crack as the other crackheads in the area. He was known for being the "smart kid" in high school so everyone would copy off his homework and tests. He, in fact, was not smart though. Everyone else was just so stupid that they thought he was a genius.</p>
+                <p>In 2018 Andres started college at University of East London and studied fashion design, but later returned to the United States when he realized fashion design jobs pay you in rice grains and bread crumbs. Upon his return he took classes at Dallas County Community College District, or DCCCCCCCCCD for short (I forget how many C's it has). Afterwards, he earned his Bachelor of Science in Information Systems at dookie ass University of Texas At Arlington, where he made some cool friends that later ghosted him, but that's for another book I think maybe idk I don't rly care abt that era anymore.</p>
+                <p></p>
+                <p>Deslizando entre suciedad
+A solas pero rodeado
+Un nuevo lugar en el que ahogarse
+A seis pies bajo la luna
+Se levantó un chupasangre
+Pintaba objetos en negro y azul con proyecciones de sí mismo
+Siempre fue sobre él mismo
+Se sacude los adentros
+Se le tuercen las tripas
+Se sienta en la humareda y piensa en ella
+Tú y yo contra esta ciudad de parásitos</p>
+		<p>Parásito, paraíso, parásito, paraíso</p>
+                
+                <div class="toc">
+                    <div class="toc-title">Contents</div>
+                    <ul>
+                        <li><a href="#section1">1 Early Life</a></li>
+                        <li><a href="#section2">2 Nonchalant Era</a></li>
+                        <li><a href="#section3">3 Death</a></li>
+                        <li><a href="#references">4 References</a></li>
+                    </ul>
+                </div>
+                
+                <h2 id="section1">Early Life</h2>
+		<div class="section-image">
+  		<img src="images/snapl.JPG" alt="andres with snapple">
+  		<div class="caption">Andres with two Snapple caps over his eyes (2012).</div>
+		</div>
+                <p>Andy was born in Garland, TX to two unloving parents that absolutely hated each other. His father said he wasn't his and his mother blamed his father's absence on him, + he was a middle child so who give a gaf abt him fr lmao. Anyway, despite living in Garland, he attended school in Oak Cliff and would have to wake up super early to make it to class on time and that sucked so much. His dad was a car radiator salesman in Fort Worth, Texas. His mother was an income tax preparer and business owner in Dallas.</p>
+		<h3>Elementary School</h3>
+		<p>At a young age Andy was kind of mean to other kids. He would lie and steal from his classmates and occasionally rope other kids into his antics so he could more easily get away with things. Occasionally, he would ask to go to the bathroom just as the final dismissal bell would ring, then tell the teachers to not wait on him so they could empty the building without him, just to sneak into the classroom and steal from his teachers lol,, what a time. Because of his weirdly troubled behavior and home life, the school ordered him to see a therapist, but he didn't actually talk to her he just liked going to see her because she had toys and snacks that his mom would never buy him.</p>
+                
+                <h3>Middle School</h3>
+                <p>Having been with the same friends from Pre-K to 5th grade, Andy had a particularly hard time adjusting to middle school. He attended a private school full of rich kids and pedophiles, but that's also for another book maybe idk I'm dead so like I can't rly write another one. Through great effort, however, he manages to make a few friends and remain relatively steady.</p>
+		
+                <h3>High School</h3>
+		<p>High school was one of the most defining times of his life actually. He switched to Sunset High School, a horribly underfunded high school in Dallas, comprised of 95% latinos. He was so unbelievably chopped and skinny, and to top it off he had very few similarities with the people around him because he didn't do drugs or chase STDs. Also, he was short and only weighed 100lbs. But, of course, there were still a few like-minded people he got along with. Here is where he developed his first love interest, but he was weird so it didn't work. Then another one, but he was shy so nothing happened and then she passed away. He excelled in his schoolwork, but only because the schoolwork was dumbed down so far to accommodate the careless community. It was this that earned him an interview at Harvard. Excited as ever, believing he was finally gonna make something of himself, he makes his appearance at the Harvard Society of Dallas ready and eager to impress the interviewers. However, they declined him after he humiliated himself by showing up in acid washed ripped jeans and an oversized t shirt with ice cream popsicles printed all over and some checkered vans. </p>
+
+		<div class="section-image">
+  		<img src="images/enough.jpg" alt="andres being annoying">
+  		<div class="caption">Andres bugging a beautiful woman that hates him (2023).</div>
+		</div>
+
+		<h3>College</h3>
+		<p>College was easily the time ever. Here he lived with an ex, that cheated and then left him for a coworker. Then an ex that was actually rly nice but he was weird and mean and not emotionally available enough. And then finally the fabled humiliationship<span class="reference">[1]</span> from the book Jesus that's so embarrassing I would rather DIEEEE. In college is where he picked up every meaningful skill he ever had. Here is where he learned about gym, diet, design, coding, and every other semi cool useless thing in life. He also made so many friends, but they all ghosted at some point so fuck everyone I met in college fr 😒. Also, college is where he thought he would fall in love so he tried kinda hard and its honestly so pathetic and embarrassing what a loser. </\p>
+
+                <h2 id="section2">Nonchalant Era</h2>
+		<div class="section-image">
+  		<img src="images/shrek.gif" alt="Shrek">
+  		<div class="caption">the entire shrek movie (2001)</div>
+		</div>
+                <p>hmm not much to this one bc he died shortly after this era started <span class="reference">[2]</span></p>
+                
+                <h2 id="section3">Death</h2>
+                <p>Andres Galdamez died in his sleep around 04:00AM on the early morning of November 2nd, 2025. Cause of death was smoke inhalation during a relatively small house fire. The cause of the fire was a giant pot of chicken that his mom left on the stovetop before going out on a night of heavy drinking and gambling.</p>
+		<p> Investigation into the pot of chicken revealed that there was plenty of water in it when his mother placed it on the stovetop. She intended to boil it for just 2 hours, but grew impatient because the alcohol and gambling addiction withdrawals were too much so she decided to leave it on the stovetop and instead blame someone else when the house filled with smoke. Because of this, the chicken was left on high heat for approximately 6 hours, which caused all the water to evaporate and leave the chicken dry, ultimately smoking it at high heat and releasing tons of smoke and polycyclic aromatic hydrocarbons into the air, which killed him.</p>
+                
+                <h2 id="references">References</h2>
+                <div class="references">
+                    <ol>
+                        <li>[Reference 1 - Andres Galdamez, Tiny Chairs, December 2024]</li>
+                        <!-- <li>[Reference 2 - Author, Title, Publication, Date]</li> -->
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
